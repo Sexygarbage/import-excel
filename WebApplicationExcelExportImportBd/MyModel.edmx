@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MuDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MuDatabaseModelStoreContainer">
+          <EntitySet Name="BookMaster" EntityType="MuDatabaseModel.Store.BookMaster" store:Type="Tables" store:Schema="dbo" store:Name="BookMaster">
+            <DefiningQuery>SELECT 
+      [BookMaster].[BookId] AS [BookId], 
+      [BookMaster].[BookName] AS [BookName], 
+      [BookMaster].[BookAuthor] AS [BookAuthor]
+      FROM [dbo].[BookMaster] AS [BookMaster]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Ошибки, обнаруженные при создании:
+      предупреждение 6002: В таблице или представлении "9727493F309AC53FF90432A127BA3FCA_CTS\WEBAPPLICATIONEXCELEXPORTIMPORTBD\WEBAPPLICATIONEXCELEXPORTIMPORTBD\APP_DATA\MUDATABASE.MDF.dbo.BookMaster" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.
+      -->
+        <EntityType Name="BookMaster">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookName" Type="nvarchar" MaxLength="255" />
+          <Property Name="BookAuthor" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MuDatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MuDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookMaster" EntityType="MuDatabaseModel.BookMaster" />
+        </EntityContainer>
+        <EntityType Name="BookMaster">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="BookName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="BookAuthor" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MuDatabaseModelStoreContainer" CdmEntityContainer="MuDatabaseEntities">
+          <EntitySetMapping Name="BookMaster">
+            <EntityTypeMapping TypeName="MuDatabaseModel.BookMaster">
+              <MappingFragment StoreEntitySet="BookMaster">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookAuthor" ColumnName="BookAuthor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MyModel">
+        <EntityTypeShape EntityType="MuDatabaseModel.BookMaster" Width="1.5" PointX="0.75" PointY="0.75" Height="1.427958984375" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
