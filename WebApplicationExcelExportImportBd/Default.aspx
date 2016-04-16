@@ -21,6 +21,7 @@
         <div>
             <br />
             <asp:label ID="lblMessage" runat="server" Fond-Bold="true" />
+            <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
             <br />
             <asp:GridView ID="gvData" runat="server" EnableSortingAndPagingCallbacks="True">
                 <EmptyDataTemplate>

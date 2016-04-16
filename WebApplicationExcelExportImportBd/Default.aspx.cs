@@ -16,6 +16,8 @@ namespace WebApplicationExcelExportImportBd
         {
             if (!IsPostBack)
             {
+                HyperLink1.Text = "google + js";
+                HyperLink1.NavigateUrl = "http://javascript.ru/forum/misc/56842-kak-s-pomoshhyu-rasshireniya-poluchit-pravilnuyu-ssylku.html";
                 //Populatedata();
                 lblMessage.Text = "Current Database Data!";
             }
@@ -55,7 +57,7 @@ namespace WebApplicationExcelExportImportBd
 Extended Properties="Excel 12.0 Xml;HDR=YES";
                      * 
                      */
-                    string query = "Select [Произвидение],[автор],[страниц] from [Лист1$] order by [страниц]";
+                    string query = "Select [Произвидение],[Автор],[страниц] from [Лист1$] order by [страниц]";
                     OleDbConnection conn = new OleDbConnection(conString);
                     if (conn.State == System.Data.ConnectionState.Closed)
                     {
@@ -81,7 +83,16 @@ Extended Properties="Excel 12.0 Xml;HDR=YES";
                     //        var v = dc.BookMaster.Where(a => a.BookId.Equals(bookId)).FirstOrDefault();
                     //    }
                     //}
-                    lblMessage.Text = gvData.Rows[0].Cells[0].Text.ToString();
+                    int itemSelect = 1;
+                    string s = "https://www.google.com.ua/search?q=" + gvData.Rows[itemSelect].Cells[0].Text + "%09"
+                        + gvData.Rows[itemSelect].Cells[1].Text + "%09" + gvData.Rows[itemSelect].Cells[2].Text +
+                        "&safe=off&biw=1280&bih=885&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi2_Ly-qpLMAhUBXiwKHWT1AM8Q_AUIBigB";
+                    lblMessage.Text = s;//gvData.Rows[0].Cells[0].Text.ToString();
+                    lblMessage.Visible = false;
+                    HyperLink1.Text = s;
+                    HyperLink1.NavigateUrl = s;
+
+
                 }
                 catch (Exception)
                 {
