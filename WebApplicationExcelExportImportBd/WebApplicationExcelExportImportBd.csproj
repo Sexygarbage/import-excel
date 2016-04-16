@@ -62,6 +62,7 @@
     <Content Include="App_Data\MuDatabase_log.ldf">
       <DependentUpon>MuDatabase.mdf</DependentUpon>
     </Content>
+    <Content Include="Scripts\include.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
